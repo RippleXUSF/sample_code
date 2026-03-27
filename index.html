@@ -6,96 +6,73 @@
   <title>XRPL Hackathon — Starter Kit</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Sora:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #080c0f;
-      --surface:   #0e1318;
-      --surface2:  #131a21;
-      --border:    rgba(255,255,255,0.07);
       --green:     #00543c;
-      --green-lt:  #00a86b;
       --gold:      #c8922a;
-      --gold-lt:   #f0c060;
-      --blue:      #0ea5e9;
-      --blue-dim:  rgba(14,165,233,0.10);
-      --text:      #dde3ea;
-      --muted:     #637280;
-      --rule:      rgba(255,255,255,0.06);
-      --red:       #f87171;
+      --gold-lt:   #f5c84a;
+      --cream:     #faf8f4;
+      --paper:     #f2ece0;
+      --ink:       #141210;
+      --ink-2:     #4a4540;
+      --ink-3:     #9a9288;
+      --rule:      #ddd5c5;
+      --bg:        #faf8f4;
+      --surface:   #f2ece0;
+      --surface2:  #ede7d9;
+      --border:    #ddd5c5;
+      --text:      #141210;
+      --muted:     #4a4540;
+      --green-lt:  #00a86b;
+      --blue:      #1a6fa8;
+      --blue-dim:  rgba(26,111,168,0.08);
+      --red:       #c0392b;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Sora', sans-serif;
       font-size: 15px;
       line-height: 1.7;
       min-height: 100vh;
-    }
-
-    body::before {
-      content: '';
-      position: fixed; inset: 0; pointer-events: none; z-index: 0;
-      background:
-        radial-gradient(ellipse 55% 40% at 5%  5%,  rgba(0,84,60,0.16)   0%, transparent 70%),
-        radial-gradient(ellipse 45% 35% at 95% 95%, rgba(200,146,42,0.09) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 30% at 65% 20%, rgba(14,165,233,0.06) 0%, transparent 70%);
+      overflow-x: hidden;
     }
 
     /* ─── TOPBAR ─── */
     .topbar {
-      position: sticky; top: 0; z-index: 200;
-      background: rgba(8,12,15,0.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--rule);
+      background: var(--green);
+      border-bottom: 3px solid var(--gold);
+      position: relative; z-index: 200;
     }
     .topbar-inner {
-      max-width: 1160px; margin: 0 auto; padding: 0 32px;
-      height: 56px; display: flex; align-items: center; gap: 16px;
+      max-width: 960px; margin: 0 auto; padding: 11px 32px;
+      display: grid; align-items: center;
+      grid-template-columns: 1fr 1fr;
     }
-    .topbar-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-    .topbar-badge {
-      background: var(--green); border: 1px solid rgba(0,168,107,0.3);
-      color: #a8f0cc; font-family: 'IBM Plex Mono', monospace;
-      font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
-      padding: 3px 8px; border-radius: 4px;
+    .topbar-left { display: flex; align-items: center; gap: 12px; }
+    .logos_divider {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; color: white; flex-shrink: 0;
     }
-    .topbar-title { font-size: 13px; font-weight: 500; color: var(--text); }
-
-    /* tab nav */
-    .topbar-tabs {
-      display: flex; align-items: center; gap: 2px;
-      margin-left: auto;
-    }
-    .tab-btn {
-      background: none; border: none; cursor: pointer;
-      color: var(--muted); font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 13px; padding: 6px 14px; border-radius: 6px;
-      transition: color 0.15s, background 0.15s;
-      position: relative;
-    }
-    .tab-btn:hover { color: var(--text); background: var(--surface2); }
-    .tab-btn.active { color: var(--gold-lt); }
-    .tab-btn.active::after {
-      content: ''; position: absolute; bottom: -8px; left: 14px; right: 14px;
-      height: 2px; background: var(--gold);
-      border-radius: 2px;
-    }
+    .usf-shield-img { width: 48px; height: auto; }
+    .ripple-logo-wrap { width: 110px; }
+    .ripple-logo-wrap img { width: 100%; height: auto; }
 
     /* ─── PAGE WRAPPER ─── */
     .page { position: relative; z-index: 1; display: none; }
     .page.active { display: block; }
 
     /* ─── SHARED LAYOUT ─── */
-    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 32px; }
 
     /* ─── HERO ─── */
-    .hero { padding: 64px 32px 48px; max-width: 1160px; margin: 0 auto; }
+    .hero { padding: 64px 32px 48px; max-width: 960px; margin: 0 auto; }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: 'IBM Plex Mono', monospace; font-size: 11px;
@@ -106,10 +83,10 @@
     .hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(34px, 5vw, 54px); font-weight: 900;
-      line-height: 1.1; color: #fff; margin-bottom: 18px; letter-spacing: -0.02em;
+      line-height: 1.1; color: var(--ink); margin-bottom: 18px; letter-spacing: -0.02em;
     }
-    .hero h1 em { font-style: italic; color: var(--gold-lt); }
-    .hero-sub { font-size: 16px; font-weight: 300; color: var(--muted); max-width: 540px; line-height: 1.65; margin-bottom: 28px; }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub { font-size: 16px; font-weight: 300; color: var(--ink-2); max-width: 540px; line-height: 1.65; margin-bottom: 28px; }
     .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; }
     .pill {
       display: inline-flex; align-items: center; gap: 6px;
@@ -125,7 +102,7 @@
     .guide-layout {
       display: grid; grid-template-columns: 210px 1fr;
       gap: 40px; align-items: start;
-      max-width: 1160px; margin: 0 auto;
+      max-width: 960px; margin: 0 auto;
       padding: 0 32px 80px;
     }
 
@@ -168,8 +145,8 @@
     }
     .sec-tag.blue { color: var(--blue); background: var(--blue-dim); border-color: rgba(14,165,233,0.2); }
     .sec-tag.green { color: var(--green-lt); background: rgba(0,84,60,0.12); border-color: rgba(0,168,107,0.2); }
-    .section h2 { font-size: 21px; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
-    .section p  { color: var(--muted); margin-bottom: 12px; }
+    .section h2 { font-size: 21px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .section p  { color: var(--ink-2); margin-bottom: 12px; }
     .section p:last-child { margin-bottom: 0; }
     .section strong { color: var(--text); font-weight: 500; }
     .section a { color: var(--blue); text-decoration: none; }
@@ -177,15 +154,15 @@
 
     /* code */
     pre {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--ink); border: 1px solid var(--border);
       border-radius: 8px; padding: 16px 20px;
       overflow-x: auto; margin: 12px 0;
     }
     pre code { font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.65; color: #c9d5e0; }
     code {
       font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;
-      color: #a8d4f0; background: rgba(14,165,233,0.08);
-      border: 1px solid rgba(14,165,233,0.15);
+      color: var(--green); background: rgba(0,84,60,0.08);
+      border: 1px solid rgba(0,84,60,0.18);
       padding: 1px 6px; border-radius: 4px;
     }
     pre code { background: none; border: none; padding: 0; color: #c9d5e0; }
@@ -229,7 +206,7 @@
       font-family: 'IBM Plex Mono', monospace; font-size: 12px;
       font-weight: 500; color: var(--gold); flex-shrink: 0;
     }
-    .step-head h3 { font-size: 14px; font-weight: 600; color: #fff; }
+    .step-head h3 { font-size: 14px; font-weight: 600; color: var(--ink); }
     .step-head .step-path {
       margin-left: auto; font-family: 'IBM Plex Mono', monospace;
       font-size: 11px; color: var(--muted);
@@ -277,10 +254,10 @@
     }
 
     /* ─── SAMPLES PAGE ─── */
-    .samples-wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px 80px; }
+    .samples-wrap { max-width: 960px; margin: 0 auto; padding: 0 32px 80px; }
     .samples-section { margin-bottom: 48px; }
     .samples-section h2 {
-      font-size: 18px; font-weight: 600; color: #fff;
+      font-size: 18px; font-weight: 600; color: var(--ink);
       margin-bottom: 6px; letter-spacing: -0.01em;
     }
     .samples-section > p { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
@@ -314,7 +291,7 @@
       color: var(--gold);
     }
     .repo-badge.devnet { background: rgba(14,165,233,0.1); border-color: rgba(14,165,233,0.25); color: var(--blue); }
-    .repo-name { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 6px; font-family: 'IBM Plex Mono', monospace; }
+    .repo-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; font-family: 'IBM Plex Mono', monospace; }
     .repo-desc { font-size: 13px; color: var(--muted); line-height: 1.5; flex: 1; }
     .repo-arrow { margin-top: 14px; font-size: 12px; color: var(--muted); transition: color 0.15s; }
     .repo-card:hover .repo-arrow { color: var(--text); }
@@ -359,7 +336,7 @@
     .link-card:hover { border-color: rgba(255,255,255,0.13); background: var(--surface2); }
     .link-icon { font-size: 18px; flex-shrink: 0; width: 26px; text-align: center; }
     .link-body { flex: 1; }
-    .link-name { font-size: 14px; font-weight: 500; color: #fff; }
+    .link-name { font-size: 14px; font-weight: 500; color: var(--ink); }
     .link-url  { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 1px; }
     .link-ext  { font-size: 14px; color: var(--muted); }
     .links-subhead {
@@ -370,30 +347,29 @@
 
     /* ─── PAGE HERO (non-home) ─── */
     .page-hero {
-      max-width: 1160px; margin: 0 auto;
+      max-width: 960px; margin: 0 auto;
       padding: 48px 32px 32px;
     }
     .page-hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(28px, 4vw, 42px); font-weight: 900;
-      color: #fff; letter-spacing: -0.02em; margin-bottom: 10px;
+      color: var(--ink); letter-spacing: -0.02em; margin-bottom: 10px;
     }
-    .page-hero h1 em { font-style: italic; color: var(--gold-lt); }
-    .page-hero p { font-size: 15px; color: var(--muted); max-width: 520px; }
+    .page-hero h1 em { font-style: italic; color: var(--gold); }
+    .page-hero p { font-size: 15px; color: var(--ink-2); max-width: 520px; }
 
     /* ─── FOOTER ─── */
     footer {
+      background: var(--green);
+      border-top: 3px solid var(--gold);
+      margin-top: 60px;
       position: relative; z-index: 1;
-      border-top: 1px solid var(--rule); padding: 22px 32px;
+      padding: 22px 32px;
     }
     .footer-inner {
-      max-width: 1160px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px;
     }
-    .footer-inner span { font-size: 12px; color: var(--muted); }
-    .footer-links { display: flex; gap: 16px; }
-    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
-    .footer-links a:hover { color: var(--text); }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 780px) {
@@ -410,21 +386,33 @@
 <body>
 
 <!-- ═══════════════ TOPBAR ═══════════════ -->
-<nav class="topbar">
+<div class="topbar">
   <div class="topbar-inner">
-    <div class="topbar-brand">
-      <span class="topbar-badge">USF × Ripple</span>
-      <span class="topbar-title">XRPL Hackathon</span>
+    <div class="topbar-left logos">
+      <div class="usf-block" style="display:flex;align-items:center;">
+        <img class="usf-shield-img" src="university-of-san-francisco.jpg" alt="University of San Francisco" />
+      </div>
+      <span class="logos_divider">|</span>
+      <div class="ripple-logo-wrap">
+        <img src="full-ripple-logo.png" alt="Ripple" />
+      </div>
     </div>
-    <div class="topbar-tabs">
-      <button class="tab-btn active" onclick="showPage('home')"    id="tab-home">Home</button>
-      <button class="tab-btn"        onclick="showPage('guide')"   id="tab-guide">Starter Guide</button>
-      <button class="tab-btn"        onclick="showPage('samples')" id="tab-samples">All Samples</button>
-      <button class="tab-btn"        onclick="showPage('errors')"  id="tab-errors">Errors</button>
-      <button class="tab-btn"        onclick="showPage('links')"   id="tab-links">Links</button>
+    <div style="display:flex; align-items:center; gap:24px; justify-self:end;">
+      <a onclick="showPage('home'); return false;" href="#"
+         style="font-family:'IBM Plex Mono',monospace; font-size:16px;
+                color:rgba(255,255,255,0.9); letter-spacing:0.07em;
+                text-transform:uppercase; text-decoration:none; font-weight:600;">
+        Home
+      </a>
+      <a href="https://ripplexusf.github.io/links/" target="_self" rel="noopener noreferrer"
+         style="font-family:'IBM Plex Mono',monospace; font-size:16px;
+                color:rgba(255,255,255,0.9); letter-spacing:0.07em;
+                text-transform:uppercase; text-decoration:none; font-weight:600;">
+        Resources
+      </a>
     </div>
   </div>
-</nav>
+</div>
 
 
 <!-- ═══════════════ HOME PAGE ═══════════════ -->
@@ -443,25 +431,25 @@
   <div class="wrap" style="padding-bottom: 80px;">
 
     <!-- Quick start cards -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-bottom: 48px;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 48px;">
 
       <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; cursor: pointer;" onclick="showPage('guide')">
         <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Start here</div>
-        <div style="font-size:18px; font-weight:600; color:#fff; margin-bottom:8px;">Starter Guide</div>
+        <div style="font-size:18px; font-weight:600; color:var(--ink); margin-bottom:8px;">Starter Guide</div>
         <div style="font-size:13px; color:var(--muted); line-height:1.5; margin-bottom:16px;">Step-by-step walkthrough of the three core samples. Setup, concepts, what to try.</div>
         <div style="font-size:13px; color:var(--gold-lt);">Open guide →</div>
       </div>
 
       <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; cursor: pointer;" onclick="showPage('samples')">
         <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:10px;">Explore</div>
-        <div style="font-size:18px; font-weight:600; color:#fff; margin-bottom:8px;">All Samples</div>
+        <div style="font-size:18px; font-weight:600; color:var(--ink); margin-bottom:8px;">All Samples</div>
         <div style="font-size:13px; color:var(--muted); line-height:1.5; margin-bottom:16px;">Browse all beginner-friendly repos from the official XRPL dev portal, organized by level.</div>
         <div style="font-size:13px; color:var(--blue);">Browse samples →</div>
       </div>
 
       <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
         <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--green-lt); margin-bottom:10px;">Official Docs</div>
-        <div style="font-size:18px; font-weight:600; color:#fff; margin-bottom:8px;">XRPL Tutorials</div>
+        <div style="font-size:18px; font-weight:600; color:var(--ink); margin-bottom:8px;">XRPL Tutorials</div>
         <div style="font-size:13px; color:var(--muted); line-height:1.5; margin-bottom:16px;">The full official tutorial series from xrpl.org — payments, tokens, DeFi and more.</div>
         <a href="https://xrpl.org/docs/tutorials" target="_blank" style="font-size:13px; color:var(--green-lt); text-decoration:none;">xrpl.org/docs/tutorials ↗</a>
       </div>
@@ -475,21 +463,21 @@
 
         <div style="flex:1; min-width:180px; background:var(--surface); border:1px solid var(--border); padding:18px 20px; border-radius:10px 0 0 10px; position:relative;">
           <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--gold); margin-bottom:6px;">01</div>
-          <div style="font-size:14px; font-weight:600; color:#fff; margin-bottom:4px;">get-started</div>
+          <div style="font-size:14px; font-weight:600; color:var(--ink); margin-bottom:4px;">get-started</div>
           <div style="font-size:12px; color:var(--muted);">Connect, create a wallet, read account info</div>
-          <div style="position:absolute; right:-10px; top:50%; transform:translateY(-50%); color:var(--gold); font-size:14px; z-index:2; background:var(--bg); padding:0 3px;">→</div>
+          <div style="position:absolute; right:-10px; top:50%; transform:translateY(-50%); color:var(--gold); font-size:14px; z-index:2; padding:0 3px;">→</div>
         </div>
 
         <div style="flex:1; min-width:180px; background:var(--surface); border:1px solid var(--border); border-left:none; padding:18px 20px; position:relative;">
           <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--gold); margin-bottom:6px;">02</div>
-          <div style="font-size:14px; font-weight:600; color:#fff; margin-bottom:4px;">send-xrp</div>
+          <div style="font-size:14px; font-weight:600; color:var(--ink); margin-bottom:4px;">send-xrp</div>
           <div style="font-size:12px; color:var(--muted);">Send a transaction — learn the core 4-step pattern</div>
-          <div style="position:absolute; right:-10px; top:50%; transform:translateY(-50%); color:var(--gold); font-size:14px; z-index:2; background:var(--bg); padding:0 3px;">→</div>
+          <div style="position:absolute; right:-10px; top:50%; transform:translateY(-50%); color:var(--gold); font-size:14px; z-index:2; padding:0 3px;">→</div>
         </div>
 
         <div style="flex:1; min-width:180px; background:var(--surface); border:1px solid var(--border); border-left:none; padding:18px 20px; border-radius:0 10px 10px 0;">
           <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--gold); margin-bottom:6px;">03</div>
-          <div style="font-size:14px; font-weight:600; color:#fff; margin-bottom:4px;">get-tx</div>
+          <div style="font-size:14px; font-weight:600; color:var(--ink); margin-bottom:4px;">get-tx</div>
           <div style="font-size:12px; color:var(--muted);">Look up a transaction — verify it's final</div>
         </div>
 
@@ -1121,7 +1109,7 @@ print(tx_response.result["meta"]["TransactionResult"])      # tesSUCCESS</code><
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
   <div class="footer-inner">
-    <span>USF × Ripple Hackathon · San Francisco</span>
+    <img src="test2.png" alt="USF Law" style="height: 48px; width: auto;" />
   </div>
 </footer>
 
