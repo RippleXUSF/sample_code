@@ -535,7 +535,7 @@
                  background:none; border:1.5px solid var(--rule); border-radius:4px;
                  color:var(--ink-3); padding:8px 10px; cursor:pointer;
                  transition:border-color 0.2s, color 0.2s;">
-          ← Back to Home
+          ← Back
         </button>
       </div>
     </aside>
@@ -904,7 +904,7 @@ print(tx_response.result["meta"]["TransactionResult"])      # tesSUCCESS</code><
              background:none; border:1.5px solid var(--rule); border-radius:4px;
              color:var(--ink-2); padding:10px 20px; cursor:pointer;
              transition:border-color 0.2s, color 0.2s;">
-      ← Back to Home
+      ← Back
     </button>
   </div>
 
@@ -1017,10 +1017,19 @@ print(tx_response.result["meta"]["TransactionResult"])      # tesSUCCESS</code><
     </div>
 
   </div>
+
+  <div style="text-align:center; padding:40px 32px 64px;">
+    <button onclick="showPage('home')"
+      style="display:inline-flex; align-items:center; gap:8px;
+             font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:500;
+             letter-spacing:0.05em; text-transform:uppercase;
+             background:none; border:1.5px solid var(--rule); border-radius:4px;
+             color:var(--ink-2); padding:10px 20px; cursor:pointer;
+             transition:border-color 0.2s, color 0.2s;">
+      ← Back
+    </button>
+  </div>
 </div>
-
-
-<!-- ═══════════════ ERRORS PAGE ═══════════════ -->
 <div class="page" id="page-errors">
   <div class="page-hero">
     <h1>Common <em>Errors</em></h1>
