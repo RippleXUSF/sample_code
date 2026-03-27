@@ -60,8 +60,8 @@
       font-family: 'Playfair Display', serif;
       font-size: 22px; color: white; flex-shrink: 0;
     }
-    .usf-shield-img { width: 72px; height: auto; }
-    .ripple-logo-wrap { width: 130px; }
+    .usf-shield-img { width: 48px; height: auto; }
+    .ripple-logo-wrap { width: 110px; }
     .ripple-logo-wrap img { width: 100%; height: auto; }
 
     /* ─── PAGE WRAPPER ─── */
@@ -120,8 +120,8 @@
       font-size: 13px; padding: 6px 10px; border-radius: 6px;
       transition: color 0.15s, background 0.15s;
     }
-    .sb-links a:hover { color: var(--text); background: var(--surface2); }
-    .sb-links a.active { color: var(--gold-lt); background: var(--surface2); }
+    .sb-links a:hover { color: var(--gold); background: var(--surface2); }
+    .sb-links a.active { color: var(--gold); background: var(--surface2); }
     .sb-num {
       font-family: 'IBM Plex Mono', monospace; font-size: 10px;
       background: var(--surface2); border-radius: 3px;
@@ -398,7 +398,7 @@
       </div>
     </div>
     <div style="display:flex; align-items:center; gap:24px; justify-self:end;">
-      <a href="https://ripplexusf.github.io/" target="_self" rel="noopener noreferrer"
+      <a onclick="showPage('home'); return false;" href="#"
          style="font-family:'IBM Plex Mono',monospace; font-size:16px;
                 color:rgba(255,255,255,0.9); letter-spacing:0.07em;
                 text-transform:uppercase; text-decoration:none; font-weight:600;">
@@ -437,7 +437,7 @@
         <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Start here</div>
         <div style="font-size:18px; font-weight:600; color:var(--ink); margin-bottom:8px;">Starter Guide</div>
         <div style="font-size:13px; color:var(--muted); line-height:1.5; margin-bottom:16px;">Step-by-step walkthrough of the three core samples. Setup, concepts, what to try.</div>
-        <div style="font-size:13px; color:var(--gold-lt);">Open guide →</div>
+        <div style="font-size:13px; color:var(--gold);">Open guide →</div>
       </div>
 
       <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; cursor: pointer;" onclick="showPage('samples')">
@@ -527,6 +527,17 @@
           <a href="#step3"><span class="sb-num">03</span>get-tx</a>
         </div>
       </div>
+      <div style="margin-top: 8px;">
+        <button onclick="showPage('home')"
+          style="width:100%; display:flex; align-items:center; gap:8px;
+                 font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600;
+                 letter-spacing:0.05em; text-transform:uppercase;
+                 background:none; border:1.5px solid var(--rule); border-radius:4px;
+                 color:var(--ink-3); padding:8px 10px; cursor:pointer;
+                 transition:border-color 0.2s, color 0.2s;">
+          ← Back to Home
+        </button>
+      </div>
     </aside>
 
     <!-- Content -->
@@ -563,9 +574,9 @@
             <p>We'll download three folders of sample code from GitHub. GitHub is a website where developers share code publicly — you don't need an account to download.</p>
             <p>Go to <a href="https://download-directory.github.io" target="_blank">download-directory.github.io</a>. Paste each of these URLs into the box and click Download. You'll get a zip file each time — unzip them all into one folder on your computer.</p>
             <div style="display:flex; flex-direction:column; gap:8px; margin:14px 0;">
-              <div style="background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:10px 14px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#a8d4f0; word-break:break-all;">https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/get-started</div>
-              <div style="background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:10px 14px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#a8d4f0; word-break:break-all;">https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/send-xrp</div>
-              <div style="background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:10px 14px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#a8d4f0; word-break:break-all;">https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/get-tx</div>
+              <div style="background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:10px 14px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#1a5fa8; word-break:break-all;">https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/get-started</div>
+              <div style="background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:10px 14px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#1a5fa8; word-break:break-all;">https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/send-xrp</div>
+              <div style="background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:10px 14px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#1a5fa8; word-break:break-all;">https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/get-tx</div>
             </div>
             <p>Each download contains a folder. Inside each folder, find the subfolder called <code>py</code> — that's where the Python code lives. Your folder structure should look like this:</p>
             <pre><code>my-xrpl-project/
@@ -885,7 +896,17 @@ print(tx_response.result["meta"]["TransactionResult"])      # tesSUCCESS</code><
 
     </main>
   </div>
-</div>
+  <div style="max-width: 960px; margin: 0 auto; padding: 32px 32px 64px;">
+    <button onclick="showPage('home')"
+      style="display:inline-flex; align-items:center; gap:8px;
+             font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600;
+             letter-spacing:0.05em; text-transform:uppercase;
+             background:none; border:1.5px solid var(--rule); border-radius:4px;
+             color:var(--ink-2); padding:10px 20px; cursor:pointer;
+             transition:border-color 0.2s, color 0.2s;">
+      ← Back to Home
+    </button>
+  </div>
 
 
 <!-- ═══════════════ SAMPLES PAGE ═══════════════ -->
